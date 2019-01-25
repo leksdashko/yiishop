@@ -10,7 +10,7 @@ namespace app\models;
 
 use yii\db\ActiveRecord;
 
-class Categoty extends ActiveRecord{
+class Category extends ActiveRecord{
     
     public static function tableName() {
         return 'category';

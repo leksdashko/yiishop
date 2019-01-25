@@ -1,10 +1,14 @@
 /*price range*/
 
- $('#sl2').slider();
+$('.catalog').dcAccordion({
+    'speed':300
+});
 
-	var RGBChange = function() {
-	  $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
-	};	
+$('#sl2').slider();
+
+var RGBChange = function() {
+  $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
+};	
 		
 /*scroll to top*/
 

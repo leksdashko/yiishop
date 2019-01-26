@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Andrey
- * Date: 07.05.2016
- * Time: 10:28
+ * User: leksdashko
  */
 
 namespace app\models;
@@ -15,9 +12,16 @@ class Category extends ActiveRecord{
     public static function tableName(){
         return 'category';
     }
+    
+    public static function getCurrentCategory($id){
+        $category = parent::findOne($id);
+        return $category;
+    }
 
     public function getProducts(){
         return $this->hasMany(Product::className(), ['category_id' => 'id']);
     }
+    
+    
 
 } 

@@ -19,8 +19,10 @@ class CategoryController extends AppController{
     public function actionView($id){
         $category = Category::getCurrentCategory($id);
         $this->setMeta('YIISHOP | ' . $category->name, $category->keywords, $category->description);
-        $products = Product::find()->where(['category_id' => $id])->all();
-        return $this->render('view', compact('products', 'category'));
+        $query = Product::find()->where(['category_id' => $id]);
+        $pages = new \yii\data\Pagination(['totalCount' => $query->count(), 'pageSize' => 3, 'forcePageParam' => false, 'pageSizeParam' => false]);
+        $products = $query->offset($pages->offset)->limit($pages->limit)->all();
+        return $this->render('view', compact('products', 'pages', 'category'));
     }
 
 } 

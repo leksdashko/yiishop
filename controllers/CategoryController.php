@@ -18,6 +18,9 @@ class CategoryController extends AppController{
 
     public function actionView($id){
         $category = Category::getCurrentCategory($id);
+        if(empty($category))
+            throw new \yii\web\HttpException('404', 'Такой категории нет');
+        
         $this->setMeta('YIISHOP | ' . $category->name, $category->keywords, $category->description);
         $query = Product::find()->where(['category_id' => $id]);
         $pages = new \yii\data\Pagination(['totalCount' => $query->count(), 'pageSize' => 3, 'forcePageParam' => false, 'pageSizeParam' => false]);

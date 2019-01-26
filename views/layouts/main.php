@@ -147,7 +147,9 @@ ltAppAsset::register($this);
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <input type="text" placeholder="Search"/>
+                        <form method="get" action="<?= \yii\helpers\Url::to(['category/search']) ?>">
+                            <input type="text" name="q" placeholder="Search"/>
+                        </form>
                     </div>
                 </div>
             </div>

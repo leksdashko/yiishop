@@ -27,5 +27,14 @@ class CategoryController extends AppController{
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();
         return $this->render('view', compact('products', 'pages', 'category'));
     }
+    
+    public function actionSearch(){
+        $q = trim(\yii\helpers\Html::encode(Yii::$app->request->get('q')));
+        $query = Product::find()->where(['like', 'name', $q]);
+        $pages = new \yii\data\Pagination(['totalCount' => $query->count(), 'pageSize' => 3, 'forcePageParam' => false, 'pageSizeParam' => false]);
+        $products = $query->offset($pages->offset)->limit($pages->limit)->all();
+        $this->setMeta('YIISHOP | Поиск: ' . $q);
+        return $this->render('search', compact('products', 'pages', 'q'));
+    }
 
 } 

@@ -10,7 +10,7 @@ use Yii;
 
 class ProductController extends AppController{
 
-    public function actionView($id){
+    public function actionView($id = null){
         
         $product = Product::findOne($id);
         if(empty($product))

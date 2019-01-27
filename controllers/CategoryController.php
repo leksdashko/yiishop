@@ -16,7 +16,7 @@ class CategoryController extends AppController{
         return $this->render('index', compact('hits'));
     }
 
-    public function actionView($id){
+    public function actionView($id = null){
         $category = Category::getCurrentCategory($id);
         if(empty($category))
             throw new \yii\web\HttpException('404', 'Такой категории нет');
